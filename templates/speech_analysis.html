@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Sight Ai</title>
+    <link rel="stylesheet" href="../static/index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div id="nav">
+        <div id="logo-v">
+            <video autoplay muted loop src="../static/SafeSight-Ai-logo color.mp4"></video>
+        </div>
+        <a href="/">Home</a>
+        <a href="{{ url_for('geofencing') }}">Geofencing</a>
+        <a href="{{ url_for('gesture_recognition_page') }}">Gesture Recognition</a>
+        <a href="{{ url_for('video_analytics') }}">Video Analytics</a>
+        <a href="{{ url_for('speech_analysis') }}">Speech Analysis</a>
+        <a href="{{ url_for('threat_level_detection') }}">Threat Recognition</a>
+    </div>
+    <!-- 10% gap -->
+     <div id="gap10"></div>
+    <!-- main section -->
+     <div id="main">
+         <h1>Speech Analysis</h1>
+         <form action="{{ url_for('speech_analysis') }}" method="POST">
+             <label for="duration">Speech Duration (seconds):</label>
+             <input type="number" name="duration" id="duration" value="5" required>
+             <button class="btn" type="submit">Analyze Speech</button>
+            </form>    
+        </div>
+</body>
+</html>

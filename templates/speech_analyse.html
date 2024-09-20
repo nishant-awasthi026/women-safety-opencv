@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Speech Analysis</h1>
+    <form action="{{ url_for('speech_analyse') }}" method="POST">
+        <label for="duration">Speech Duration (seconds):</label>
+        <input type="number" name="duration" id="duration" value="5" required>
+        <button type="submit">Analyze Speech</button>
+    </form>    
+</body>
+</html>

@@ -1,0 +1,173 @@
+*{
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: gilroy;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background: #0a0a0a;
+    color: white;
+}
+body::-webkit-scrollbar{
+    background-color: transparent;
+    width: 10px;
+}
+body::-webkit-scrollbar-thumb{
+    background-color: #ff00ee;
+}
+
+#nav{
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    z-index: 999;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#nav a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+}
+#nav a:hover{
+    color: rgb(255, 0, 238);   
+}
+#logo-v{
+    height: 100%;
+    width: 15%;
+    background: rgb(0, 0, 0);
+}
+#logo-v video{
+    width:100% ;
+    height: 100%;
+}
+#gap10{
+    height: 10%;
+    width: 100%;
+}
+#main{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+#main h1{ 
+    width: 70%;
+    font-size: 4em;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin: 5%;
+}
+/* From Uiverse.io by iZOXVL */ 
+.boton-elegante {
+    padding: 15px 30px;
+    border: 2px solid #2c2c2c;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+  }
+  
+  .boton-elegante::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    transform: scale(0);
+    transition: transform 0.5s ease;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 40px;
+    border: #ff00ee 2px solid;
+    border-radius: 10px;
+  }
+  form input{
+    color: #000;
+    margin: 5px;
+  }
+  .boton-elegante:hover::after {
+    transform: scale(4);
+  }
+  
+  .boton-elegante:hover {
+    border-color: #666666;
+    background: #292929;
+  }
+  .btn{
+    border: #ff00ee 2px solid;
+    border-radius: 10px;
+  }
+  
+#key-fea{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#tuto{
+    width: 100%;
+    height: 200%;
+
+}
+.cover{
+    height: 35%;
+    width: 30%;
+    background: red;
+    border: 5px solid purple;
+    border-radius: 20px;
+    margin: 120px;
+    margin-left: 350px;
+}
+.cover:nth-child(2n){
+    margin-left: 750px;
+}
+
+.cover img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover h1{
+    margin: 20px;
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    position: relative;
+    top: -70% ;
+    left: 100%;
+    max-height: fit-content;
+}
+.cover h2{
+    left: -100%;
+    font-size: 3rem;
+    position: relative;
+    top: -70% ;
+    max-height: fit-content;
+}
+

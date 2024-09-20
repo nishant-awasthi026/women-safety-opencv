@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Analytics</title>
+    <link rel="stylesheet" href="../static/geofencing.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div id="nav">
+        <div id="logo-v">
+            <video autoplay muted loop src="../static/SafeSight-Ai-logo color.mp4"></video>
+        </div>
+        <a href="/">Home</a>
+        <a href="{{ url_for('geofencing') }}">Geofencing</a>
+        <a href="{{ url_for('gesture_recognition_page') }}">Gesture Recognition</a>
+        <a href="{{ url_for('video_analytics') }}">Video Analytics</a>
+        <a href="{{ url_for('speech_analysis') }}">Speech Analysis</a>
+        <a href="{{ url_for('threat_level_detection') }}">Threat Recognition</a>
+    </div>
+    <!-- 10% gap -->
+     <div id="gap10"></div>
+    <!-- main section -->
+     <div id="main">
+        <h1>Video Analytics</h1>
+        
+        <!-- Upload Video for Analytics -->
+        <form action="{{ url_for('video_analytics') }}" method="POST" enctype="multipart/form-data">
+            <label for="video_file">Upload Video for Analytics:</label>
+            <input type="file" name="video_file" id="video_file" accept="video/*" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if result %}
+        <h2>Analytics Result</h2>
+        <p>{{ result }}</p>
+        {% endif %}
+
+        {% if log_entries %}
+        <h2>Activity Log</h2>
+        <ul>
+            {% for entry in log_entries %}
+            <li>{{ entry }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+</body>
+</html>

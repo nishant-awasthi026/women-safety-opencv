@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Finder</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="/">Women Safety Analytics</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('geofencing') }}">Geofencing</a></li>
+                <li><a href="{{ url_for('route_finder') }}">Route Finder</a></li>
+                <li><a href="{{ url_for('gesture_recognition') }}">Gesture Recognition</a></li>
+                <li><a href="{{ url_for('video_analytics') }}">Video Analytics</a></li>
+                <li><a href="#cta">Get Started</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Route Finder</h1>
+        <form action="{{ url_for('route_finder') }}" method="post">
+            <label for="start_location">Start Location (lat,long):</label>
+            <input type="text" id="start_location" name="start_location" required>
+            <br>
+            <label for="end_location">End Location (lat,long):</label>
+            <input type="text" id="end_location" name="end_location" required>
+            <br>
+            <input type="submit" value="Find Route">
+        </form>
+        {% if route_info %}
+        <h2>Route Information</h2>
+        <p>Route Coordinates: {{ route_info['route'] }}</p>
+        <p>Duration (seconds): {{ route_info['duration'] }}</p>
+        <p>Distance (meters): {{ route_info['distance'] }}</p>
+        {% elif error %}
+        <p>Error: {{ error }}</p>
+        {% endif %}
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Smart Safety Analytics. All rights reserved.</p>
+                <p><strong>Contact:</strong> <a href="mailto:support@safetyanalytics.com">support@safetyanalytics.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

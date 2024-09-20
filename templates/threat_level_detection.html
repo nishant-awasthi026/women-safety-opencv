@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Sight AI - Threat Recognition</title>
+    <link rel="stylesheet" href="../static/gesture-reco.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div id="nav">
+        <div id="logo-v">
+            <video autoplay muted loop src="../static/SafeSight-Ai-logo color.mp4"></video>
+        </div>
+        <a href="/">Home</a>
+        <a href="{{ url_for('geofencing') }}">Geofencing</a>
+        <a href="{{ url_for('gesture_recognition_page') }}">Gesture Recognition</a>
+        <a href="{{ url_for('video_analytics') }}">Video Analytics</a>
+        <a href="{{ url_for('speech_analysis') }}">Speech Analysis</a>
+        <a href="{{ url_for('threat_level_detection') }}">Threat Recognition</a>
+    </div>
+    
+    <!-- Main section -->
+    <div id="main">
+        <h1>Threat Recognition</h1>
+        <button class="btn" id="start-recognition">Open Camera & Start Threat Recognition</button>
+        <img id="video-stream" src="" alt="">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const startButton = document.getElementById('start-recognition');
+            const resultDiv = document.getElementById('result');
+            const videoStream = document.getElementById('video-stream');
+
+            startButton.addEventListener('click', function() {
+                startRecognition();
+            });
+
+            function startRecognition() {
+                // Start streaming the video feed
+                videoStream.src = "/stream_feed";
+                
+                // Send a request to start gesture recognition
+                fetch('/threat_level_detection', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.gesture) {
+                        resultDiv.textContent = `Gesture Detected: ${data.gesture}`;
+                    } else if (data.error) {
+                        resultDiv.textContent = `Error: ${data.error}`;
+                    }
+                })
+                .catch(err => {
+                    console.error('Error recognizing gesture:', err);
+                    resultDiv.textContent = 'An error occurred while recognizing the gesture.';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
